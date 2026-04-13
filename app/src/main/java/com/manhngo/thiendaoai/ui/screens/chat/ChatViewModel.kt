@@ -7,13 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.manhngo.thiendaoai.data.model.ChatMessage
 import com.manhngo.thiendaoai.data.model.MessageType
+import com.manhngo.thiendaoai.data.model.UserStats
 import com.manhngo.thiendaoai.data.repository.ChatRepository
+import com.manhngo.thiendaoai.data.repository.CultivationSystem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ChatViewModel(private val repository: ChatRepository) : ViewModel() {
+
+    private val _userStats = MutableStateFlow(UserStats())
+    val userStats: StateFlow<UserStats> = _userStats.asStateFlow()
 
     private val _messages = MutableStateFlow<List<ChatMessage>>(
         listOf(
@@ -50,9 +55,10 @@ class ChatViewModel(private val repository: ChatRepository) : ViewModel() {
                         content = response,
                         type = MessageType.SYSTEM
                     )
+                    _userStats.value = CultivationSystem.addExp(_userStats.value, 50)
                 } catch (e: Exception) {
                     _messages.value = _messages.value + ChatMessage(
-                        content = "Kết nối với Thiên Đạo bị gián đoạn...",
+                        content = "Kết nối thần trí với Thiên Đạo bị gián đoạn...",
                         type = MessageType.SYSTEM
                     )
                 } finally {

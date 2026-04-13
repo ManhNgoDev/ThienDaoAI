@@ -8,14 +8,14 @@ data class UserStats(
     val tang: Int = 1
 )
 
-enum class CanhGioi{
-    LuyenKhi,
-    TrucCo,
-    KimDan,
-    NguyenAnh,
-    HoaThan,
-    LuyenHu,
-    HopThe,
-    DaiThua,
-    DoKiep
+enum class CanhGioi(val displayName: String){
+    LuyenKhi("Luyện Khí Kỳ"),
+    TrucCo("Trúc Cơ Kỳ"),
+    KimDan("Kim Đan Kỳ"),
+    NguyenAnh("Nguyên Anh Kỳ"),
+    HoaThan("Hoá Thần Kỳ"),
+    LuyenHu("Luyện Hư Kỳ"),
+    HopThe("Hợp Thể Kỳ"),
+    DaiThua("Đại Thừa Kỳ"),
+    DoKiep("Độ Kiếp Kỳ")
 }

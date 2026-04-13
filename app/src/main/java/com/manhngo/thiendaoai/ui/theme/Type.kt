@@ -2,12 +2,17 @@ package com.manhngo.thiendaoai.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.sp
 import com.manhngo.thiendaoai.R
+
+val VNLovalistaFont = FontFamily(
+    Font(R.font.vn_lovelista_regular)
+)
 
 val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -33,11 +38,9 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     ),
     titleLarge = TextStyle(
-        fontFamily = NotoSerifFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
+        fontFamily = VNLovalistaFont, // 🔥 dùng font custom
+        fontWeight = FontWeight.Normal,
+        fontSize = 26.sp
     ),
     labelSmall = TextStyle(
         fontFamily = NotoSerifFontFamily,
