@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.manhngo.thiendaoai.navigation.AppNavigation
-import com.manhngo.thiendaoai.screens.ChatScreen
-import com.manhngo.thiendaoai.screens.SplashScreen
+import com.manhngo.thiendaoai.ui.navigation.AppNavigation
+import com.manhngo.thiendaoai.ui.screens.chat.ChatScreen
+import com.manhngo.thiendaoai.ui.screens.splash.SplashScreen
 import com.manhngo.thiendaoai.ui.theme.ThienDaoAITheme
 
 class MainActivity : ComponentActivity() {

@@ -1,7 +1,7 @@
-package com.manhngo.thiendaoai.service
+package com.manhngo.thiendaoai.data.remote
 
-import com.manhngo.thiendaoai.model.ChatRequest
-import com.manhngo.thiendaoai.model.ChatResponse
+import com.manhngo.thiendaoai.data.model.ChatRequest
+import com.manhngo.thiendaoai.data.model.ChatResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

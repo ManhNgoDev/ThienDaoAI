@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.component
+package com.manhngo.thiendaoai.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

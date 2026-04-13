@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.navigation
+package com.manhngo.thiendaoai.ui.navigation
 
 
 import androidx.compose.runtime.Composable
@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.manhngo.thiendaoai.screens.MainScreen
-import com.manhngo.thiendaoai.screens.SplashScreen
+import com.manhngo.thiendaoai.ui.screens.main.MainScreen
+import com.manhngo.thiendaoai.ui.screens.splash.SplashScreen
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {

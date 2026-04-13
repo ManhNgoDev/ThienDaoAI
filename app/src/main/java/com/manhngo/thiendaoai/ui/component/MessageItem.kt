@@ -1,8 +1,8 @@
-package com.manhngo.thiendaoai.component
+package com.manhngo.thiendaoai.ui.component
 
 import androidx.compose.runtime.Composable
-import com.manhngo.thiendaoai.model.ChatMessage
-import com.manhngo.thiendaoai.model.MessageType
+import com.manhngo.thiendaoai.data.model.ChatMessage
+import com.manhngo.thiendaoai.data.model.MessageType
 
 @Composable
 fun MessageItem(message: ChatMessage) {

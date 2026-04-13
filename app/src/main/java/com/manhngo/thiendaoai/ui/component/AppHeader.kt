@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.component
+package com.manhngo.thiendaoai.ui.component
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode

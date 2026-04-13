@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.screens
+package com.manhngo.thiendaoai.ui.screens.main
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -7,7 +7,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.manhngo.thiendaoai.navigation.BottomBar
+import com.manhngo.thiendaoai.ui.navigation.BottomBar
+import com.manhngo.thiendaoai.ui.screens.chat.ChatScreen
+import com.manhngo.thiendaoai.ui.screens.history.HistoryScreen
+import com.manhngo.thiendaoai.ui.screens.profile.ProfileScreen
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {

@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.model
+package com.manhngo.thiendaoai.data.model
 
 data class ChatRequest(
     val model: String = "google/gemma-4-e4b",

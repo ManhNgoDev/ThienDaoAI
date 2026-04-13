@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.model
+package com.manhngo.thiendaoai.data.model
 
 enum class MessageType { SYSTEM, USER }
 

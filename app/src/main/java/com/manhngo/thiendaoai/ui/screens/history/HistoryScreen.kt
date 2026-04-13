@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.screens
+package com.manhngo.thiendaoai.ui.screens.history
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.component
+package com.manhngo.thiendaoai.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.manhngo.thiendaoai.model.ChatMessage
+import com.manhngo.thiendaoai.data.model.ChatMessage
 
 @Composable
 fun SystemMessageItem(message: ChatMessage) {

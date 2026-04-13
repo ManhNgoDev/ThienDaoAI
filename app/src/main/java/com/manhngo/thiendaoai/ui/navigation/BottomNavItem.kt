@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.navigation
+package com.manhngo.thiendaoai.ui.navigation
 
 import androidx.compose.ui.graphics.painter.Painter
 

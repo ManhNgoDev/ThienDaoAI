@@ -1,4 +1,4 @@
-package com.manhngo.thiendaoai.screens
+package com.manhngo.thiendaoai.ui.screens.splash
 
 import android.net.Uri
 import androidx.annotation.OptIn
