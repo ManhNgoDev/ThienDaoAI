@@ -8,10 +8,11 @@
 
 | Màn Hình Chính | Tàng Thư Các | Hồ Sơ Tu Sĩ |
 | :---: | :---: | :---: |
-| ![Main Screen](https://via.placeholder.com/300x600?text=Màn+Hình+Chính) | ![History Screen](https://via.placeholder.com/300x600?text=Tàng+Thư+Các) | ![Profile Screen](https://via.placeholder.com/300x600?text=Hồ+Sơ+Tu+Sĩ) |
+| ![Main Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145622" src="https://github.com/user-attachments/assets/8df71261-c155-4945-bb7d-18a8634fa3be" />) | ![History Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145628" src="https://github.com/user-attachments/assets/b42230cd-1b78-4f29-9edb-89d52a01345a" />
+) | ![Profile Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145635" src="https://github.com/user-attachments/assets/d9bab14b-7f99-419c-ac39-88340ef95731" />
+) |
 
 ## 🌟 Tính Năng Chính
-
 - **Đàm Đạo Với Thiên Đạo**: Trò chuyện trực tiếp với AI được huấn luyện theo phong cách tiên hiệp, cổ phong. Mỗi câu trả lời đều mang đậm khí chất của bậc đại năng.
 - **Hệ Thống Tu Vi (XP System)**: Tích lũy kinh nghiệm thông qua việc đàm đạo và đặt câu hỏi. Càng giao tiếp nhiều, tu vi của bạn càng thăng tiến.
 - **Tàng Thư Các (History)**: Lưu trữ các đoạn đối thoại tâm đắc dưới dạng các điển tích. Bạn có thể quay lại xem hoặc tiếp tục các đoạn chat cũ bất cứ lúc nào.
