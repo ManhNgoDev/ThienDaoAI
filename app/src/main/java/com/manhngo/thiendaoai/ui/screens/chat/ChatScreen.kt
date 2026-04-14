@@ -1,5 +1,6 @@
 package com.manhngo.thiendaoai.ui.screens.chat
 
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,8 +15,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.manhngo.thiendaoai.data.local.AppDatabase
 import com.manhngo.thiendaoai.data.model.ChatMessage
 import com.manhngo.thiendaoai.data.model.MessageType
 import com.manhngo.thiendaoai.data.remote.ApiService
@@ -23,16 +26,20 @@ import com.manhngo.thiendaoai.data.repository.ChatRepository
 import com.manhngo.thiendaoai.ui.component.AppHeader
 import com.manhngo.thiendaoai.ui.component.ChatInputBar
 import com.manhngo.thiendaoai.ui.component.MessageItem
+import com.manhngo.thiendaoai.ui.screens.profile.UserViewModel
 
 @Composable
-fun ChatScreen() {
-    // Pro-style manual DI for demo purposes
+fun ChatScreen(userViewModel: UserViewModel, sessionId: Long? = null) {
+    val context = LocalContext.current
     val apiService = remember { ApiService.create() }
-    val repository = remember { ChatRepository(apiService) }
+    
     val viewModel: ChatViewModel = viewModel(
+        key = sessionId?.toString() ?: "new_chat",
         factory = object : androidx.lifecycle.ViewModelProvider.Factory {
             override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
-                return ChatViewModel(repository) as T
+                val db = AppDatabase.getDatabase(context)
+                val repository = ChatRepository(apiService, db.chatDao())
+                return ChatViewModel(repository, userViewModel::train, sessionId) as T
             }
         }
     )
@@ -89,3 +96,4 @@ fun ChatScreen() {
         }
     }
 }
+

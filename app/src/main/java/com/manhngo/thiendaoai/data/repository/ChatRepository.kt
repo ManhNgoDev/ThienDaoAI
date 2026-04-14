@@ -6,7 +6,55 @@ import com.manhngo.thiendaoai.data.model.ChatRequest
 import com.manhngo.thiendaoai.data.model.MessageType
 import com.manhngo.thiendaoai.data.remote.ApiService
 
-class ChatRepository(private val apiService: ApiService) {
+import com.manhngo.thiendaoai.data.local.dao.ChatDao
+import com.manhngo.thiendaoai.data.local.entity.LocalChatMessage
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+class ChatRepository(
+    private val apiService: ApiService,
+    private val chatDao: ChatDao
+) {
+
+    fun getMessages(sessionId: Long): Flow<List<ChatMessage>> {
+        return chatDao.getMessagesForSession(sessionId).map { locals ->
+            locals.map { ChatMessage(content = it.content, type = it.type) }
+        }
+    }
+
+    suspend fun saveMessage(sessionId: Long, message: ChatMessage) {
+        // Save message
+        chatDao.insertMessage(
+            LocalChatMessage(
+                sessionId = sessionId,
+                content = message.content,
+                type = message.type
+            )
+        )
+        // Update session snippet and timestamp
+        chatDao.updateSessionSnippet(sessionId, message.content.take(100), System.currentTimeMillis())
+    }
+
+    fun getAllSessions() = chatDao.getAllSessions()
+
+    suspend fun createSession(title: String, initialSnippet: String): Long {
+        return chatDao.insertSession(
+            com.manhngo.thiendaoai.data.local.entity.LocalChatSession(
+                title = title,
+                lastSnippet = initialSnippet
+            )
+        )
+    }
+
+    suspend fun clearHistory(sessionId: Long) {
+        chatDao.deleteMessagesForSession(sessionId)
+        chatDao.deleteSession(sessionId)
+    }
+
+    suspend fun clearAll() {
+        chatDao.clearAllMessages()
+        chatDao.clearAllSessions()
+    }
 
     suspend fun sendMessage(messages: List<ChatMessage>): String {
         val apiMessages = mutableListOf<ApiMessage>()
@@ -19,10 +67,12 @@ class ChatRepository(private val apiService: ApiService) {
                     Ngươi là Thiên Đạo – luật của vạn vật.
                     
                     LUÔN trả lời người dùng bằng nội dung hoàn chỉnh.
+                    KHÔNG trả reasoning_content.
                     KHÔNG để content rỗng.
                     KHÔNG chỉ suy nghĩ nội bộ.
+                    Trả lời ngắn, không dài dòng
                     
-                    Hãy trả lời theo phong cách huyền huyễn, cổ phong.
+                    Hãy trả lời theo phong cách huyễn huyền, tu tiên, cổ phong.
                 """.trimIndent()
             )
         )

@@ -1,5 +1,6 @@
 package com.manhngo.thiendaoai.ui.screens.profile
 
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,9 +39,9 @@ import com.manhngo.thiendaoai.ui.component.AppHeader
 import com.manhngo.thiendaoai.ui.component.ProfileAnimation
 
 @Composable
-fun ProfileScreen(modifier: Modifier = Modifier) {
-    val viewModel: UserViewModel = viewModel()
-    val stats by viewModel.stats.collectAsState()
+fun ProfileScreen(userViewModel: UserViewModel, modifier: Modifier = Modifier) {
+
+    val stats by userViewModel.stats.collectAsState()
     //progress logic
     val progress = CultivationSystem.getProgress(stats)
     val percent = (progress * 100).toInt()
@@ -93,11 +96,14 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             LinearProgressIndicator(
-                progress = progress,
+                progress = {progress},
                 color = Color(0xff735C00),
+                trackColor = Color(0xffEFEFED),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(12.dp),
+                strokeCap = StrokeCap.Round,
+                gapSize = 0.dp
             )
 
             Spacer(modifier = Modifier.height(6.dp))

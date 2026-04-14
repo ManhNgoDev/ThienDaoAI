@@ -24,8 +24,12 @@ object CultivationSystem {
         var currentExp = stats.currentExp + exp
         var tang = stats.tang
         var canhGioi = stats.canhGioi
-        var linhLuc = stats.linhLuc
-        var thanThuc = stats.thanThuc
+        
+        val multiplier = canhGioi.ordinal + 1
+        
+        // Tăng linh lực và thần thức tỉ lệ thuận với exp nhận được (tăng dần mỗi lần tu luyện)
+        var linhLuc = stats.linhLuc + (exp * 0.5 * multiplier)
+        var thanThuc = stats.thanThuc + (exp * 0.2 * multiplier)
 
         while (true) {
             val expNeeded = getExpNeeded(canhGioi, tang)
@@ -35,8 +39,7 @@ object CultivationSystem {
             currentExp -= expNeeded
             tang++
 
-            var multiplier = canhGioi.ordinal + 1
-
+            // Thưởng thêm linh lực và thần thức khi đột phá tầng
             linhLuc += 10 * tang * multiplier
             thanThuc += 5 * tang * multiplier
 
@@ -44,6 +47,7 @@ object CultivationSystem {
                 tang = 1
                 canhGioi = nextCanhGioi(canhGioi)
 
+                // Thưởng lớn khi đột phá đại cảnh giới
                 val m = canhGioi.ordinal + 1
                 linhLuc += 1000 * m
                 thanThuc += 500 * m

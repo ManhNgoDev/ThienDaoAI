@@ -1,20 +1,40 @@
 package com.manhngo.thiendaoai.ui.screens.main
 
+import android.annotation.SuppressLint
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.manhngo.thiendaoai.data.local.AppDatabase
+import com.manhngo.thiendaoai.data.repository.UserRepository
 import com.manhngo.thiendaoai.ui.navigation.BottomBar
 import com.manhngo.thiendaoai.ui.screens.chat.ChatScreen
 import com.manhngo.thiendaoai.ui.screens.history.HistoryScreen
 import com.manhngo.thiendaoai.ui.screens.profile.ProfileScreen
+import com.manhngo.thiendaoai.ui.screens.profile.UserViewModel
 
+@SuppressLint("ContextCastToActivity")
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     val navController = rememberNavController()
+
+    val userViewModel: UserViewModel = viewModel(
+        viewModelStoreOwner = context as ComponentActivity,
+        factory = object : androidx.lifecycle.ViewModelProvider.Factory {
+            override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
+                val db = AppDatabase.getDatabase(context)
+                val repository = UserRepository(db.userDao())
+                return UserViewModel(repository) as T
+            }
+        }
+    )
 
     Scaffold(
         bottomBar = {
@@ -24,17 +44,17 @@ fun MainScreen(modifier: Modifier = Modifier) {
         NavHost(
             navController = navController,
             startDestination = "chat",
-            // Xóa phần padding top từ Scaffold để nội dung (Header) có thể tràn lên sát Status Bar
             modifier = modifier.padding(bottom = padding.calculateBottomPadding())
         ) {
-            composable("chat") {
-                ChatScreen()
+            composable("chat?sessionId={sessionId}") { backStackEntry ->
+                val sessionId = backStackEntry.arguments?.getString("sessionId")?.toLongOrNull()
+                ChatScreen(userViewModel = userViewModel, sessionId = sessionId)
             }
             composable("history") {
-                HistoryScreen()
+                HistoryScreen(navController = navController)
             }
             composable("profile") {
-                ProfileScreen()
+                ProfileScreen(userViewModel = userViewModel)
             }
         }
     }

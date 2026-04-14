@@ -24,3 +24,6 @@ captures/
 
 # Android Studio local configuration
 .navigation/
+
+# Heap dumps
+*.hprof
