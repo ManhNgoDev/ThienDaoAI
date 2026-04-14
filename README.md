@@ -8,8 +8,9 @@
 
 | Màn Hình Chính | Tàng Thư Các | Hồ Sơ Tu Sĩ |
 | :---: | :---: | :---: |
-| ![Main Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145622" src="https://github.com/user-attachments/assets/8df71261-c155-4945-bb7d-18a8634fa3be" />) | ![History Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145628" src="https://github.com/user-attachments/assets/b42230cd-1b78-4f29-9edb-89d52a01345a" />
-) | ![Profile Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145635" src="https://github.com/user-attachments/assets/d9bab14b-7f99-419c-ac39-88340ef95731" />
+| ![Main Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145622" src="https://github.com/user-attachments/assets/8b0de3f2-e3f1-4578-a8ad-47fdf9978351" />
+) | ![History Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145628" src="https://github.com/user-attachments/assets/e4e4836a-a791-4ecb-ab0a-ca24934d9b6d" />
+) | ![Profile Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145635" src="https://github.com/user-attachments/assets/12a39178-8980-48d8-8996-53632bc80f0c" />
 ) |
 
 ## 🌟 Tính Năng Chính
