@@ -8,10 +8,7 @@
 
 | Màn Hình Chính | Tàng Thư Các | Hồ Sơ Tu Sĩ |
 | :---: | :---: | :---: |
-| ![Main Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145622" src="https://github.com/user-attachments/assets/8b0de3f2-e3f1-4578-a8ad-47fdf9978351" />
-) | ![History Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145628" src="https://github.com/user-attachments/assets/e4e4836a-a791-4ecb-ab0a-ca24934d9b6d" />
-) | ![Profile Screen](<img width="1080" height="2424" alt="Screenshot_20260414_145635" src="https://github.com/user-attachments/assets/12a39178-8980-48d8-8996-53632bc80f0c" />
-) |
+| ![Main Screen](screenshots/chat_screen.png) | ![History Screen](screenshots/history_screen.png) | ![Profile Screen](screenshots/profile_screen.png) |
 
 ## 🌟 Tính Năng Chính
 - **Đàm Đạo Với Thiên Đạo**: Trò chuyện trực tiếp với AI được huấn luyện theo phong cách tiên hiệp, cổ phong. Mỗi câu trả lời đều mang đậm khí chất của bậc đại năng.
