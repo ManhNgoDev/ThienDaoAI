@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.manhngo.thiendaoai.ui.screens.main.MainScreen
 import com.manhngo.thiendaoai.ui.screens.splash.SplashScreen
+import com.manhngo.thiendaoai.ui.screens.technique.TechniqueScreen
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
@@ -25,7 +26,11 @@ fun AppNavigation(modifier: Modifier = Modifier) {
         }
 
         composable("main") {
-            MainScreen()
+            MainScreen(rootNavController = navController)
+        }
+
+        composable("technique") {
+            TechniqueScreen()
         }
     }
 }

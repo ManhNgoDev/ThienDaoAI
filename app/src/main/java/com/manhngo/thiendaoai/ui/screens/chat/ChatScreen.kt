@@ -1,6 +1,5 @@
 package com.manhngo.thiendaoai.ui.screens.chat
 
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.manhngo.thiendaoai.data.local.AppDatabase
 import com.manhngo.thiendaoai.data.model.ChatMessage
 import com.manhngo.thiendaoai.data.model.MessageType
@@ -29,7 +29,11 @@ import com.manhngo.thiendaoai.ui.component.MessageItem
 import com.manhngo.thiendaoai.ui.screens.profile.UserViewModel
 
 @Composable
-fun ChatScreen(userViewModel: UserViewModel, sessionId: Long? = null) {
+fun ChatScreen(
+    userViewModel: UserViewModel, 
+    sessionId: Long? = null, 
+    rootNavController: NavController
+) {
     val context = LocalContext.current
     val apiService = remember { ApiService.create() }
     
@@ -54,7 +58,7 @@ fun ChatScreen(userViewModel: UserViewModel, sessionId: Long? = null) {
             .fillMaxSize()
             .background(Color(0xfffaf6eb))
     ) {
-        AppHeader()
+        AppHeader(navController = rootNavController)
 
         LazyColumn(
             state = listState,
@@ -96,4 +100,3 @@ fun ChatScreen(userViewModel: UserViewModel, sessionId: Long? = null) {
         }
     }
 }
-

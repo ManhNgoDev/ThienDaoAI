@@ -31,7 +31,11 @@ import com.manhngo.thiendaoai.ui.component.AppHeader
 import com.manhngo.thiendaoai.ui.component.HistoryItem
 
 @Composable
-fun HistoryScreen(navController: NavController, modifier: Modifier = Modifier) {
+fun HistoryScreen(
+    navController: NavController, 
+    rootNavController: NavController, 
+    modifier: Modifier = Modifier
+) {
     val context = LocalContext.current
     val viewModel: HistoryViewModel = viewModel(
         factory = object : androidx.lifecycle.ViewModelProvider.Factory {
@@ -51,7 +55,7 @@ fun HistoryScreen(navController: NavController, modifier: Modifier = Modifier) {
             .fillMaxSize()
             .background(Color(0xfffaf6eb))
     ) {
-        AppHeader()
+        AppHeader(navController = rootNavController)
 
         Column(
             modifier = Modifier

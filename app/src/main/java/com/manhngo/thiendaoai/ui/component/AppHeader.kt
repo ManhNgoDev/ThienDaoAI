@@ -1,5 +1,6 @@
 package com.manhngo.thiendaoai.ui.component
 
+import android.text.Layout
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,10 +33,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.manhngo.thiendaoai.R
 
 @Composable
-fun AppHeader(modifier: Modifier = Modifier) {
+fun AppHeader(navController: NavController, modifier: Modifier = Modifier) {
     val infiniteTransition = rememberInfiniteTransition(label = "infinite_rotation")
 
     val rotationAngle by infiniteTransition.animateFloat(
@@ -71,5 +74,24 @@ fun AppHeader(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        IconButton(
+            onClick = {
+                navController.navigate("technique") {
+                   popUpTo("main") {
+                       saveState = true
+                   }
+                }
+            },
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.pagoda),
+                contentDescription = null,
+                modifier = Modifier.size(36.dp),
+                tint = Color.Unspecified
+            )
+        }
     }
 }

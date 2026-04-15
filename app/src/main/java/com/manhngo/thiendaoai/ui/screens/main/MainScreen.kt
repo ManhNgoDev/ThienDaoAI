@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -21,9 +22,9 @@ import com.manhngo.thiendaoai.ui.screens.profile.UserViewModel
 
 @SuppressLint("ContextCastToActivity")
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(rootNavController: NavController, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    val navController = rememberNavController()
+    val bottomNavController = rememberNavController()
 
     val userViewModel: UserViewModel = viewModel(
         viewModelStoreOwner = context as ComponentActivity,
@@ -38,23 +39,23 @@ fun MainScreen(modifier: Modifier = Modifier) {
 
     Scaffold(
         bottomBar = {
-            BottomBar(navController)
+            BottomBar(bottomNavController)
         }
     ) { padding ->
         NavHost(
-            navController = navController,
+            navController = bottomNavController,
             startDestination = "chat",
             modifier = modifier.padding(bottom = padding.calculateBottomPadding())
         ) {
             composable("chat?sessionId={sessionId}") { backStackEntry ->
                 val sessionId = backStackEntry.arguments?.getString("sessionId")?.toLongOrNull()
-                ChatScreen(userViewModel = userViewModel, sessionId = sessionId)
+                ChatScreen(userViewModel = userViewModel, sessionId = sessionId, rootNavController = rootNavController)
             }
             composable("history") {
-                HistoryScreen(navController = navController)
+                HistoryScreen(navController = bottomNavController, rootNavController = rootNavController)
             }
             composable("profile") {
-                ProfileScreen(userViewModel = userViewModel)
+                ProfileScreen(userViewModel = userViewModel, rootNavController = rootNavController)
             }
         }
     }

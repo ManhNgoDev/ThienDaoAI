@@ -1,6 +1,5 @@
 package com.manhngo.thiendaoai.ui.screens.profile
 
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,31 +25,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.manhngo.thiendaoai.R
 import com.manhngo.thiendaoai.data.repository.CultivationSystem
 import com.manhngo.thiendaoai.ui.component.AppHeader
 import com.manhngo.thiendaoai.ui.component.ProfileAnimation
 
 @Composable
-fun ProfileScreen(userViewModel: UserViewModel, modifier: Modifier = Modifier) {
-
+fun ProfileScreen(
+    userViewModel: UserViewModel, 
+    rootNavController: NavController,
+    modifier: Modifier = Modifier
+) {
     val stats by userViewModel.stats.collectAsState()
     //progress logic
     val progress = CultivationSystem.getProgress(stats)
-    val percent = (progress * 100).toInt()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xfffaf6eb))
     ) {
-        AppHeader()
+        AppHeader(navController = rootNavController)
 
         Column(
             modifier = Modifier.fillMaxWidth(),
